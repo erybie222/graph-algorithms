@@ -1,5 +1,7 @@
 from dag_toposort import matrix_topological_sort, list_to_matrix, topological_sort, generate_random_dag
-
+from benchmark import run_benchmark, save_result_csv, measure_time
+from plots import plot_time_difference
+import os
 if __name__ == "__main__":
     n = 6
     adj_list = generate_random_dag(n)
@@ -11,3 +13,14 @@ if __name__ == "__main__":
     matrix = list_to_matrix(adj_list)
     order_matrix = matrix_topological_sort(matrix)
     print("Sortowanie topologiczne (macierz):", order_matrix)
+
+    filename = 'wyniki.csv'
+
+    if os.path.exists(filename):
+        os.remove(filename)
+
+    for n in range(500, 5000, 500): 
+        result = run_benchmark(n)
+        print(result)
+        save_result_csv(result, filename, append=True)
+    plot_time_difference(filename)
