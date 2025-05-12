@@ -4,6 +4,7 @@ from plots import plot_time_difference
 import os
 if __name__ == "__main__":
     n = 6
+    elements = [500 , 1000, 1500, 2000, 2500, 3000, 3500 , 4000, 4500, 5000, 5500, 6000, 6500, 7000, 7500]
     adj_list = generate_random_dag(n)
     print("Lista sąsiedztwa:", adj_list)
 
@@ -19,7 +20,7 @@ if __name__ == "__main__":
     if os.path.exists(filename):
         os.remove(filename)
 
-    for n in range(500, 5000, 500): 
+    for n in elements: 
         result = run_benchmark(n)
         print(result)
         save_result_csv(result, filename, append=True)

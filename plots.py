@@ -16,7 +16,7 @@ def plot_time_difference(filename):
             matrix_times.append(float(row['time_matrix']))
 
 
-    plt.plot(sizes, list_times, label='Lista sąsiedztwa', color='blue', linewidth=2)
+    plt.plot(sizes, list_times, label='Lista incydencji', color='blue', linewidth=2)
     plt.plot(sizes, matrix_times, label='Macierz sąsiedztwa', color='red', linewidth=2)
 
 
